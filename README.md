@@ -19,8 +19,8 @@
 - [x] 编写 FH_1.1.cs
 - [X] 编写 FH_1.2.cs
 
-- [x] 上传 fishing-heaven-opencode-agent 项目 (项目用途详见fishing-heaven-opencode-agent文件夹内README.md文件)
+- [x] 上传 fishing-heaven-opencode-agent 项目 (**详情阅读 README.md 文件**)
 ---
 
-## 后续开发日志
-- 待记录
+## 2026.08.14 开发日志
+- [x] 上传 fishing-heaven-opencode-agent 项目补丁 (**clickhere.bat**和**Check&Repair.pdf**)
