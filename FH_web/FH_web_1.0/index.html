@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#bfe8f4" />
+  <title>钓鱼天国 · Fishing Heaven</title>
+  <meta name="description" content="《钓鱼天国》游戏官网" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- Loader is self-contained. Even if site.js fails, it cannot stay at 0%. -->
+  <div class="loader" id="loader">
+    <div class="loader-sun" aria-hidden="true"></div>
+    <div class="loader-grass" aria-hidden="true"></div>
+    <div class="loader-goblin-wrap" aria-hidden="true">
+      <img class="loader-goblin" src="./assets/images/loader-goblin.png" alt="" />
+    </div>
+    <div class="loader-copy">
+      <small>FISHING HEAVEN</small>
+      <strong>正在前往湖边…</strong>
+      <div class="loader-track"><i id="loaderBar"></i></div>
+      <b id="loaderPercent">0%</b>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const loader = document.getElementById('loader');
+      const bar = document.getElementById('loaderBar');
+      const pct = document.getElementById('loaderPercent');
+      let value = 0, done = false;
+      const finish = () => {
+        if (done) return; done = true;
+        if (bar) bar.style.width = '100%';
+        if (pct) pct.textContent = '100%';
+        setTimeout(() => loader && loader.classList.add('is-hidden'), 160);
+      };
+      const timer = setInterval(() => {
+        value = Math.min(100, value + Math.max(5, Math.round((100 - value) * .22)));
+        if (bar) bar.style.width = value + '%';
+        if (pct) pct.textContent = value + '%';
+        if (value >= 100) { clearInterval(timer); finish(); }
+      }, 48);
+      setTimeout(() => { clearInterval(timer); finish(); }, 2400);
+    })();
+  </script>
+
+  <header class="topbar">
+    <a class="brand" href="#" data-page="0" aria-label="首页">
+      <img src="./assets/images/game-icon.png" alt="钓鱼天国" />
+      <span><b>钓鱼天国</b><small>FISHING HEAVEN</small></span>
+    </a>
+    <div class="top-actions">
+      <button class="pill" id="bgmButton"><i class="eq"><em></em><em></em><em></em></i><span>BGM</span></button>
+      <button class="round" id="settingsButton" aria-label="设置">⚙</button>
+    </div>
+  </header>
+
+  <nav class="chapter-nav" id="chapterNav">
+    <button class="chapter active" data-page="0"><small>00</small><b>INDEX</b><span>首页</span></button>
+    <button class="chapter" data-page="1"><small>01</small><b>PLAY</b><span>玩法</span></button>
+    <button class="chapter" data-page="2"><small>02</small><b>FEVER</b><span>狂热</span></button>
+    <button class="chapter" data-page="3"><small>03</small><b>WORLD</b><span>湖边</span></button>
+    <button class="chapter" data-page="4"><small>04</small><b>MEDIA</b><span>影像</span></button>
+    <button class="chapter" data-page="5"><small>05</small><b>MORE</b><span>更多</span></button>
+  </nav>
+
+  <!-- Independent transition layer. It never contains page content. -->
+  <div class="page-transition" id="pageTransition" aria-hidden="true">
+    <i class="swipe sky"></i><i class="swipe sun"></i><i class="swipe grass"></i>
+    <div class="transition-label"><small id="transitionNo">01</small><b id="transitionTitle">PLAY</b></div>
+  </div>
+
+  <main class="site-stage" id="siteStage">
+    <!-- INDEX -->
+    <section class="page page-index active" data-index="0">
+      <div class="page-inner index-layout">
+        <div class="copy-column">
+          <p class="eyebrow reveal" style="--d:0">RHYTHM FISHING GAME</p>
+          <h1 class="hero-title reveal" style="--d:1">钓鱼<br><span>天国</span></h1>
+          <div class="hero-en reveal" style="--d:2">FISHING HEAVEN</div>
+          <p class="lead reveal" style="--d:3">听见鼓点。等鱼上钩。<br>在正确的时机，把今天最大的鱼钓上来。</p>
+          <div class="button-row reveal" style="--d:4">
+            <button class="primary" data-page="1">开始了解玩法 <small>START</small></button>
+            <button class="secondary" disabled>DEMO <small>COMING SOON</small></button>
+          </div>
+        </div>
+        <div class="placeholder-panel hero-placeholder reveal" style="--d:2">
+          <div class="placeholder-grid three">
+            <i class="ph blue"></i><i class="ph green"></i><i class="ph orange"></i>
+          </div>
+          <div class="placeholder-label"><small>MAIN VISUAL</small><b>主视觉占位</b></div>
+        </div>
+      </div>
+      <div class="ticker"><b>湖边快报</b><span>游戏官网页面结构搭建中</span><small>DEVELOPMENT</small></div>
+    </section>
+
+    <!-- PLAY -->
+    <section class="page page-play" data-index="1">
+      <div class="page-inner split-layout">
+        <div class="copy-column">
+          <p class="eyebrow reveal" style="--d:0">01 / CORE GAMEPLAY</p>
+          <h2 class="reveal" style="--d:1">先听，<br>再钓。</h2>
+          <p class="lead reveal" style="--d:2">每一轮先播放一小段鼓点。记住它，然后在外圈缩到内圈时点击。</p>
+          <div class="steps reveal" style="--d:3">
+            <article><small>01</small><b>LISTEN</b><span>先听短节奏</span></article>
+            <article><small>02</small><b>CLICK</b><span>按节奏点击</span></article>
+            <article><small>03</small><b>ENERGY</b><span>积攒能量</span></article>
+          </div>
+        </div>
+        <div class="placeholder-panel play-placeholder reveal" style="--d:2">
+          <div class="simple-bar"></div>
+          <div class="placeholder-grid three"><i class="ph blue"></i><i class="ph orange"></i><i class="ph green"></i></div>
+          <div class="placeholder-label"><small>GAMEPLAY</small><b>实机画面占位</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEVER -->
+    <section class="page page-fever" data-index="2">
+      <div class="page-inner fever-layout">
+        <div class="fever-copy">
+          <p class="eyebrow reveal" style="--d:0">02 / REWARD TIME</p>
+          <h2 class="fever-title reveal" style="--d:1">FEVER!</h2>
+          <p class="lead reveal" style="--d:2">能量满以后，你不用再点。<br>接下来是鱼的时间。</p>
+        </div>
+        <div class="fever-bottom">
+          <div class="placeholder-panel fever-placeholder reveal" style="--d:2">
+            <div class="placeholder-grid three"><i class="ph blue"></i><i class="ph green"></i><i class="ph orange"></i></div>
+            <div class="placeholder-label"><small>FEVER PERFORMANCE</small><b>演出占位</b></div>
+          </div>
+          <div class="fever-steps reveal" style="--d:3">
+            <article><b>01</b><span>鱼开始连续上钩</span></article>
+            <article><b>02</b><span>速度越来越快</span></article>
+            <article><b>03</b><span>全部撞向哥布林</span></article>
+            <article><b>04</b><span>最后一条超大鱼收尾</span></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORLD -->
+    <section class="page page-world" data-index="3">
+      <div class="page-inner world-layout">
+        <div class="world-copy">
+          <p class="eyebrow reveal" style="--d:0">03 / BY THE LAKE</p>
+          <h2 class="reveal" style="--d:1">湖边<br>的一天。</h2>
+          <p class="lead reveal" style="--d:2">阳光、草地、鱼，以及一点不讲理的快乐。</p>
+        </div>
+        <div class="world-cards">
+          <article class="info-card reveal" style="--d:1"><div class="rect blue"></div><small>01 / POND</small><b>钓鱼湖</b><span>主舞台</span></article>
+          <article class="info-card reveal" style="--d:2"><div class="rect orange"></div><small>02 / FISH</small><b>鱼类</b><span>图鉴占位</span></article>
+          <article class="info-card reveal" style="--d:3"><div class="rect green"></div><small>03 / MARKET</small><b>商人</b><span>后续内容</span></article>
+          <article class="info-card reveal" style="--d:4"><div class="rect purple"></div><small>04 / PLAZA</small><b>交易场</b><span>后续内容</span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEDIA -->
+    <section class="page page-media" data-index="4">
+      <div class="page-inner media-layout">
+        <div class="media-head">
+          <div><p class="eyebrow reveal" style="--d:0">04 / GALLERY</p><h2 class="reveal" style="--d:1">湖边相册</h2></div>
+          <div class="filter reveal" style="--d:2"><button class="active">ALL</button><button>GAMEPLAY</button><button>FEVER</button><button>ART</button></div>
+        </div>
+        <div class="media-grid">
+          <article class="media-card large reveal" style="--d:1"><div class="rect blue"></div><b>核心玩法演示</b><small>001 / GAMEPLAY</small></article>
+          <article class="media-card reveal" style="--d:2"><div class="rect orange"></div><b>FEVER</b><small>002</small></article>
+          <article class="media-card reveal" style="--d:3"><div class="rect green"></div><b>FISH</b><small>003</small></article>
+          <article class="media-card wide reveal" style="--d:4"><div class="rect purple"></div><b>CONCEPT ART</b><small>004</small></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MORE -->
+    <section class="page page-more" data-index="5">
+      <div class="page-inner more-layout">
+        <div class="copy-column">
+          <p class="eyebrow reveal" style="--d:0">05 / MORE</p>
+          <h2 class="reveal" style="--d:1">今天<br>钓什么？</h2>
+          <p class="lead reveal" style="--d:2">游戏下载、社区、更新日志，以及开发者用的 OpenCode Agent，都先留在这里。</p>
+        </div>
+        <div class="portal-list">
+          <button class="portal reveal" style="--d:1" disabled><small>01 / DOWNLOAD</small><b>下载 Demo</b><span>COMING SOON</span><i>↗</i></button>
+          <button class="portal reveal" style="--d:2" disabled><small>02 / COMMUNITY</small><b>社区</b><span>BILIBILI / STEAM / GITHUB</span><i>↗</i></button>
+          <button class="portal agent reveal" style="--d:3" id="agentPortal"><small>03 / DEVELOPER</small><b>OpenCode Agent</b><span>本地开发辅助工具</span><i>⚙</i></button>
+        </div>
+      </div>
+      <footer><span>FISHING HEAVEN / OFFICIAL WEBSITE</span><span>2026 / PROJECT FH</span><span>MADE FOR A SUNNY DAY BY THE POND.</span></footer>
+    </section>
+  </main>
+
+  <div class="settings-mask" id="settingsMask"></div>
+  <aside class="settings" id="settings">
+    <header><div><small>FISHING HEAVEN</small><h3>设置</h3></div><button id="settingsClose">×</button></header>
+    <nav class="settings-tabs"><button class="active" data-tab="general">一般</button><button data-tab="display">显示</button><button data-tab="audio">声音</button><button data-tab="agent">Agent</button></nav>
+    <div class="settings-content">
+      <section class="settings-page active" data-pane="general"><p class="drawer-tag">GENERAL</p><h4>一般设置</h4><div class="setting-row"><span><b>语言</b><small>LANGUAGE</small></span><select><option>简体中文</option><option>English</option></select></div><div class="setting-row"><span><b>官网状态</b><small>WEBSITE STATUS</small></span><code>DEVELOPMENT BUILD</code></div></section>
+      <section class="settings-page" data-pane="display"><p class="drawer-tag">DISPLAY</p><h4>显示设置</h4><div class="setting-row"><span><b>换页动态</b><small>PAGE TRANSITION</small></span><label class="switch"><input id="motionToggle" type="checkbox" checked><i></i></label></div></section>
+      <section class="settings-page" data-pane="audio"><p class="drawer-tag">AUDIO</p><h4>声音设置</h4><div class="setting-row"><span><b>官网 BGM</b><small>PLACEHOLDER</small></span><input type="range" value="70"></div></section>
+      <section class="settings-page" data-pane="agent"><p class="drawer-tag">LOCAL DEV TOOL</p><div class="agent-head"><h4>OpenCode Agent</h4><span>OFFLINE / UI ONLY</span></div><p class="agent-copy">当前只保留开发工具入口，不会从公开网页直接修改本地工程。</p><div class="agent-path"><small>SOURCE</small><code>CSharp_Upload/FH_simple.cs</code></div><div class="agent-path"><small>TARGET</small><code>Assets/Scripts/FishingHeavenDemo.cs</code></div><div class="agent-buttons"><button data-agent="status">/fh-status</button><button data-agent="verify">/fh-verify</button><button data-agent="apply">/fh-apply</button></div><div class="terminal"><div><span>FH_AGENT://OUTPUT</span><button id="clearTerminal">CLEAR</button></div><pre id="terminalText">[PLACEHOLDER]\nLocal bridge is not connected.</pre></div></section>
+    </div>
+  </aside>
+
+  <script defer src="./site.js"></script>
+</body>
+</html>
