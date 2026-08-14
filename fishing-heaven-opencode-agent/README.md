@@ -8,6 +8,11 @@
 
 目前项目使用团结引擎开发，核心游戏脚本由外部确认版本后统一放入 `CSharp_Upload/FH_simple.cs`，再由 OpenCode 部署到实际工程中。
 
+2026.08.14 添加了 clickhere.bat 和 Check&Repair.pdf 
+
+> clickhere.bat 用于一键启动该项目。
+> Check&Repair.pdf 用于查错和修复，是一份帮助文档。
+
 # 若只希望下载该智能体项目:
 
 > 请下载 FHOA.zip 
